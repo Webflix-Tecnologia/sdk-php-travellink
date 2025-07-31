@@ -1,6 +1,11 @@
 # sdk-php-travellink
 SDK PHP 8 Apis Travellink
 
+## Instalação
+```console
+composer require webflixtec/sdk-php-travellink
+```
+
 ## APIs implementadas
 - Aéreo
 
