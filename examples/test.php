@@ -65,7 +65,7 @@ try{
             "SearchModifiersVehicle" => [
                 "AirConditioning" => null,
                 "TransmissionType" => null,
-                "Category" => [],
+                "Menu" => [],
                 "FuelType" => null,
                 "VehicleClass" => [],
             ],
