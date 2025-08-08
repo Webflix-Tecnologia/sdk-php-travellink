@@ -97,8 +97,8 @@ try{
     $responseDestinos = $apiHotel->destinations([
         "AccessCredentials" => [
             "Company" => [
-                "Identifier" => $config['login'],
-                "Password" => $config['senha']
+                "Identifier" => $config['loginHotel'],
+                "Password" => $config['senhaHotel']
             ],
         ],
     ]);
