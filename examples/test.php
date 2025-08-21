@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 
 include __DIR__ . '/../vendor/autoload.php';
 
+
 $config = parse_ini_file("config.ini");
 
 /*$apiAir = new Travellink\Air\Api();
@@ -94,7 +95,7 @@ $apiHotel
     ->generateDeveloperAccesCode();
 
 try{
-    $responseDestinos = $apiHotel->destinations([
+    /*$responseDestinos = $apiHotel->destinations([
         "AccessCredentials" => [
             "Company" => [
                 "Identifier" => $config['loginHotel'],
@@ -102,8 +103,56 @@ try{
             ],
         ],
     ]);
-    var_dump($responseDestinos);
-
+    print_r($responseDestinos);*/
+    $responseHotelsAvail = $apiHotel->avail([
+        'AvailRequestSegments' => [
+            [
+                'HotelSearchCriteria' => [
+                    'Criterion' => [
+                        'Address' => [
+                            'CityName' => 'PPB'
+                        ],
+                        'RoomStayCandidates' => [
+                            [
+                                'GuestCounts' => [
+                                    [
+                                        'Age' => 25,
+                                        'Count' => 1
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                'StayDateRange' => [
+                    'Start' => '2025-08-25T00:00:00',
+                    'End' => '2025-08-26T00:00:00'
+                ],
+                'TPA_Extensions' => [
+                    'Providers' => [],
+                    'MaxRoomTypes' => 0,
+                    'OccupancyFilterType' => 'NoFilter',
+                    'BlockRoomFeature' => false,
+                    'TimeOutException' => false,
+                    'TimeOut' => 60
+                ]
+            ]
+        ],
+        'POS' => [
+            'Source' => [
+                'RequestorID' => [
+                    'TPA_Extensions' => [
+                        'Company' => [
+                            'Identifier' => $config['loginHotel'],
+                            'Password' => $config['senhaHotel']
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]);
+    //var_dump($responseHotelsAvail);
+    echo json_encode($responseHotelsAvail);
 } catch (\Travellink\Exceptions\TravellinkException $ex) {
 
     var_dump($ex);
