@@ -86,24 +86,15 @@ try{
 
 }*/
 
-$apiHotel = new Travellink\Hotel\Api();
+/*$apiHotel = new Travellink\Hotel\Api();
 
 $apiHotel
     ->setDeveloperToken($config['developerToken'])
     ->setDeveloperPublicKey($config['developerPublicKey'])
     ->setBinaryData($config['binaryData'])
-    ->generateDeveloperAccesCode();
+    ->generateDeveloperAccesCode();*/
 
-try{
-    /*$responseDestinos = $apiHotel->destinations([
-        "AccessCredentials" => [
-            "Company" => [
-                "Identifier" => $config['loginHotel'],
-                "Password" => $config['senhaHotel']
-            ],
-        ],
-    ]);
-    print_r($responseDestinos);*/
+/*try{
     $responseHotelsAvail = $apiHotel->avail([
         'AvailRequestSegments' => [
             [
@@ -151,8 +142,52 @@ try{
             ]
         ]
     ]);
-    //var_dump($responseHotelsAvail);
-    echo json_encode($responseHotelsAvail);
+    var_dump($responseHotelsAvail);
+} catch (\Travellink\Exceptions\TravellinkException $ex) {
+
+    var_dump($ex);
+
+}*/
+
+/*$apiBus = new \Travellink\Bus\Api();
+$apiBus
+    ->setDeveloperToken($config['developerToken'])
+    ->setDeveloperPublicKey($config['developerPublicKey'])
+    ->setBinaryData($config['binaryData'])
+    ->generateDeveloperAccesCode();*/
+
+/*try{
+    $responseBusLocations = $apiBus->busLocations([
+        'AccessCredentials' => [
+            'Company' => [
+                'Identifier' => $config['loginBus'],
+                'Password' => $config['senhaBus'],
+            ]
+        ]
+    ]);
+    var_dump($responseBusLocations);
+} catch (\Travellink\Exceptions\TravellinkException $ex) {
+
+    var_dump($ex);
+
+}*/
+
+$apiInsurance = new \Travellink\Insurance\Api();
+$apiInsurance
+    ->setDeveloperToken($config['developerToken'])
+    ->setDeveloperPublicKey($config['developerPublicKey'])
+    ->setBinaryData($config['binaryData'])
+    ->generateDeveloperAccesCode();
+try{
+    $responseInsuranceDestinations = $apiInsurance->insuranceDestination([
+        'AccessCredentials' => [
+            'Company' => [
+                'Identifier' => $config['loginInsurance'],
+                'Password' => $config['senhaInsurance']
+            ]
+        ]
+    ]);
+    var_dump($responseInsuranceDestinations);
 } catch (\Travellink\Exceptions\TravellinkException $ex) {
 
     var_dump($ex);
